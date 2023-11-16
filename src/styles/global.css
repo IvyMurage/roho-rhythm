@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+:root {
+    --lightWhite: #f5f5f5;
+    --lightBlue: #197f94;
+    --darkBlue: #280c53;
+    --darkPurple: #1a0c2b;
+    --lightPurple: #2a1a4b;
+    --lightGreen: #1a4b2a;
+    --darkGreen: #0c281a;
+    --lightRed: #4b1a1a;
+    --darkRed: #28100c;
+    --lightYellow: #4b3a1a;
+    --darkYellow: #281f0c;
+    --lightOrange: #4b2a1a;
+    --darkOrange: #281a0c;
+    --lightPink: #4b1a3a;
+    --darkPink: #280c1a;
+    --lightGray: #4b4b4b;
+    --darkGray: #282828;
+    --lightBrown: #4b3a1a;
+    --darkBrown: #281f0c;
+    --lightCyan: #1a4b4b;
+    --darkCyan: #0c2828;
+    --lightIndigo: #1a1a4b;
+    --darkIndigo: #0c0c28;
+    --lightTeal: #1a4b3a;
+    --darkTeal: #0c281f;
+    --lightLime: #3a4b1a;
+    --darkLime: #1f280c;
+    --lightBlueGray: #1a3a4b;
+    --darkBlueGray: #0c1f28;
+    --lightWarmGray: #4b4b4b;
+    --darkWarmGray: #282828;
+}
+
+
+@layer base {
+    .body {
+        font-family: 'Roboto', sans-serif;
+        background: rgb(2, 0, 36);
+        background: -moz-linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(40, 12, 83, 0.7959558823529411) 42%, rgba(25, 127, 148, 1) 100%);
+        background: -webkit-linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(40, 12, 83, 0.7959558823529411) 42%, rgba(25, 127, 148, 1) 100%);
+        background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(40, 12, 83, 0.7959558823529411) 42%, rgba(25, 127, 148, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024", endColorstr="#197f94", GradientType=1);
+        color: var(--lightWhite);
+        padding: 1rem;
+    }
+
+    .container {
+        padding: 1rem 1rem;
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--lightWarmGray);
+    }
+
+}
