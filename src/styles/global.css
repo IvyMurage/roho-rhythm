@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 :root {
     --lightWhite: #f5f5f5;
@@ -41,7 +41,6 @@
 
 @layer base {
     .body {
-        font-family: 'Roboto', sans-serif;
         background: rgb(2, 0, 36);
         background: -moz-linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(40, 12, 83, 0.7959558823529411) 42%, rgba(25, 127, 148, 1) 100%);
         background: -webkit-linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(40, 12, 83, 0.7959558823529411) 42%, rgba(25, 127, 148, 1) 100%);
@@ -49,10 +48,16 @@
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024", endColorstr="#197f94", GradientType=1);
         color: var(--lightWhite);
         padding: 1rem;
+
+    }
+
+    html {
+        @apply font-roboto
     }
 
     .container {
-        padding: 1rem 1rem;
+        display: grid;
+        grid-template-columns: 200px auto;
         background: rgba(0, 0, 0, 0.25);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -60,5 +65,50 @@
         backdrop-filter: blur(10px);
         border: 1px solid var(--lightWarmGray);
     }
+
+    .main {
+        grid-column-start: 2;
+    }
+
+    .icon {
+        color: #ffdb58;
+        height: 35px;
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 0.2rem;
+        justify-content: space-evenly;
+        transition: all 0.5s ease-out;
+        margin-bottom: 0.5em;
+    }
+
+    .nav-link:hover {
+        background: #EDFFEC;
+        border-radius: 16px;
+        color: black;
+        margin: 0rem  0.2rem;
+    }
+
+    .sidebar {
+        border: 1px solid gray;
+        border-radius: 16px 0 0 16px;
+        letter-spacing: 0.05em;
+        overflow-y: scroll;
+
+    }
+
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
 
 }

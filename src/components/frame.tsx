@@ -1,4 +1,4 @@
-import React from 'react'
+import Sidebar from './sidebar'
 
 interface Props {
     children: React.ReactNode
@@ -6,8 +6,13 @@ interface Props {
 
 const Frame: React.FC<Props> = ({ children }): JSX.Element => {
     return (
-        <div className='container font-roboto w-[100%]  m-auto  h-[90vh] max-w-[1200px]'>
-            {children}
+        <div className='container w-[100%]  m-auto  h-[95vh] max-w-[1200px]  '>
+            <div className='scrollbar-hide sidebar'>
+                <Sidebar />
+            </div>
+            <div className='main'>
+                {children}
+            </div>
         </div>
     )
 }

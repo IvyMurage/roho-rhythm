@@ -22,6 +22,7 @@ module.exports = {
         lightWhite: "#ddffd9",
       },
     },
+
   },
   plugins: [],
 };
