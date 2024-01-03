@@ -48,6 +48,7 @@
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024", endColorstr="#197f94", GradientType=1);
         color: var(--lightWhite);
         padding: 1rem;
+        overflow-y: hidden;
 
     }
 
@@ -64,6 +65,7 @@
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         border: 1px solid var(--lightWarmGray);
+        overflow: hidden;
     }
 
     .main {
@@ -88,7 +90,7 @@
         background: #EDFFEC;
         border-radius: 16px;
         color: black;
-        margin: 0rem  0.2rem;
+        margin: 0rem 0.2rem;
     }
 
     .sidebar {
@@ -110,5 +112,11 @@
         /* Firefox */
     }
 
+    .main {
+        overflow-y: scroll;
+        max-height: calc(100vh - 48px);
+        height: calc(100% - 48px);
+        padding: 2rem 1rem;
+    }
 
 }

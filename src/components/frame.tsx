@@ -1,3 +1,4 @@
+import Search from './search'
 import Sidebar from './sidebar'
 
 interface Props {
@@ -10,7 +11,8 @@ const Frame: React.FC<Props> = ({ children }): JSX.Element => {
             <div className='scrollbar-hide sidebar'>
                 <Sidebar />
             </div>
-            <div className='main'>
+            <div className='main scrollbar-hide'>
+                <Search />
                 {children}
             </div>
         </div>
