@@ -119,7 +119,7 @@ function Song() {
   const trackList = searchTracked?.map(track => (
     <div className="p-[1rem] tracking-wide text-sm font-medium" key={track.track.album.id}>
       <Image className='rounded-md ' src={`${track.track.album.images[0].url}`} alt="album cover" width="200" height="200" />
-      <div className="text-[#ffdb58]">{track.track.album.name}</div>
+      <div className="text-[#ffdb58] mt-2">{track.track.album.name}</div>
       <div>{track.track.album.artists[0].name}</div>
     </div>
   ));
