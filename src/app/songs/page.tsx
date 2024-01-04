@@ -1,6 +1,7 @@
 'use client'
 // Import necessary types and components
 import Loading from "@/components/loading";
+import Search from "@/components/search";
 import { Button } from "@mui/material";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -42,28 +43,30 @@ type TrackType = {
   };
 };
 
+type SearchType = {
+  search: string;
+};
+
 function Song() {
   const [tracks, setTracks] = useState<TrackType[]>([]);
   const searchParams = useSearchParams()!;
   const router = useRouter();
   const pathname = usePathname();
+  const [search, setSearch] = useState<SearchType | { search: '' }>({ search: '' });
 
   const offSet = searchParams.get('offset') || '0';
   const limit = searchParams.get('limit') || '10';
-
   const accessToken = useContext(AuthContext);
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
       const current = new URLSearchParams(Array.from(searchParams.entries()));
-      if (name === 'offset') {
-        current.delete('offset');
+      if ((name === 'offset' || name === 'limit') && value.trim() !== '') {
+        current.delete(name);
         current.set(name, value);
-      } else {
-        current.delete('limit');
-        current.set(name, value);
+      } else if (name === 'search') {
+        value.trim() !== '' ? current.set(name, value) : current.delete(name);
       }
-
       return current.toString();
     },
     [searchParams]
@@ -71,7 +74,7 @@ function Song() {
 
   const handleChange = (num: number) => {
     const offset = Number(offSet) + num;
-    const searchParams = createQueryString('offset', `${offset < 0 ? 0 : offset}`);
+    const searchParams = createQueryString('offset', `${Math.max(0, offset)}`);
     router.push(`${pathname}?${searchParams}`);
   };
 
@@ -85,10 +88,8 @@ function Song() {
           }
         });
 
-        const data = await response.json();
-
-
         if (response.ok) {
+          const data = await response.json();
           setTracks(data?.items || []);
         }
       } catch (error) {
@@ -99,7 +100,23 @@ function Song() {
     getSongs();
   }, [offSet, limit, accessToken]);
 
-  const trackList = tracks?.map(track => (
+  const handleSearchChange: React.ChangeEventHandler<HTMLInputElement> = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    const searchParams = createQueryString('search', event.target.value.trim());
+    router.push(`${pathname}?${searchParams}`);
+  };
+
+  useEffect(() => {
+    const searchValue = searchParams.get('search') || '';
+    setSearch({ search: searchValue });
+    return () => {
+      setSearch({ search: '' });
+    };
+  }, [setSearch, searchParams]);
+
+  const searchTracked = tracks?.filter(track => track.track.album.name.toLowerCase().includes(search?.search.toLowerCase()));
+
+  const trackList = searchTracked?.map(track => (
     <div className="p-[1rem] tracking-wide text-sm font-medium" key={track.track.album.id}>
       <Image className='rounded-md ' src={`${track.track.album.images[0].url}`} alt="album cover" width="200" height="200" />
       <div className="text-[#ffdb58]">{track.track.album.name}</div>
@@ -109,8 +126,11 @@ function Song() {
 
   return (
     <>
+      <Search handleChange={handleSearchChange} />
+
       {tracks.length === 0 && <Loading />}
-      <div className="grid grid-cols-2">{trackList}</div>
+
+      <div className="grid grid-cols-3">{trackList}</div>
       <div className="mt-4 flex justify-between">
         <Button
           onClick={() => handleChange(-5)}
@@ -132,3 +152,4 @@ function Song() {
 }
 
 export default Song;
+
