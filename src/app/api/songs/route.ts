@@ -1,13 +1,7 @@
-export async function GET(req: Request) {
-  const accessToken = req.json();
-  console.log(accessToken);
+export async function GET() {
   const response = await fetch(
     "https://api.spotify.com/v1/me/player/currently-playing",
-    {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    }
+ 
   );
 
   const data = await response.json();

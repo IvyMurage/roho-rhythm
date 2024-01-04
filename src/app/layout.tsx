@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     })
     const data = await response.json()
     if (response.ok) {
-      setAccessToken(data)
+      setAccessToken(data.access_token)
     }
 
 

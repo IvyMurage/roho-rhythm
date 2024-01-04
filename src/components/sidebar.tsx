@@ -32,7 +32,7 @@ function Sidebar() {
             </Link>
           </li>
           <li>
-            <Link className="nav-link" href="/songs">
+            <Link className="nav-link" href="/songs?offset=0&limit=5">
               <FontAwesomeIcon icon={faMusic} className="icon" />
               Songs
             </Link>
