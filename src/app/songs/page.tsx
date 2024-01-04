@@ -85,8 +85,10 @@ function Song() {
           }
         });
 
+        const data = await response.json();
+
+
         if (response.ok) {
-          const data = await response.json();
           setTracks(data?.items || []);
         }
       } catch (error) {

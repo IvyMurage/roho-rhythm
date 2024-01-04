@@ -1,6 +1,35 @@
+import { Alert, Box } from "@mui/material";
 import Image from "next/image";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "src/utils/context";
 
 export default function Home() {
+
+  const accessToken = useContext(AuthContext)
+
+  useEffect(() => {
+    const getALbums = async () => {
+      try {
+        const response = await fetch('  https://api.spotify.com/v1/me/albums', {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`
+          }
+        })
+
+        const data = await response.json()
+        if (response.ok) {
+          console.log(data)
+        }
+      }
+
+      catch (error) {
+        <Alert severity="error">This is an error alert — check it out!</Alert>
+        console.log(error)
+      }
+    }
+  })
+
+
   return (
     <div className=" flex relative items-center justify-between">
       <div className=" h-full">
