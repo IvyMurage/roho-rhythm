@@ -126,7 +126,7 @@ function Song() {
 
   return (
     <>
-      <Search handleChange={handleSearchChange} />
+      <Search handleChange={handleSearchChange} searchValue={search} />
 
       {tracks.length === 0 && <Loading />}
 
