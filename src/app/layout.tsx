@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         })
         if (!response.ok) {
-          throw new Error(`Something went wrong`)
+          throw new Error(`Error`)
         }
         const data = await response.json()
         if (response.ok) {
@@ -37,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       }
       catch (error) {
         console.error(error)
+
       }
     }
     getAccessToken()

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST() {
   try {
     const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
     const response = await fetch("https://accounts.spotify.com/api/token", {
