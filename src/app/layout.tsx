@@ -15,22 +15,23 @@ type AccessTokenType = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [accessToken, setAccessToken] = useState<AccessTokenType | null>(null)
-  const getAccessToken = async () => {
-    const response = await fetch('/api/access-token', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
+
+  useEffect(() => {
+    const getAccessToken = async () => {
+      const response = await fetch('/api/access-token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+
+      })
+      const data = await response.json()
+      if (response.ok) {
+        setAccessToken(data.access_token)
       }
 
-    })
-    const data = await response.json()
-    if (response.ok) {
-      setAccessToken(data.access_token)
+
     }
-
-
-  }
-  useEffect(() => {
     getAccessToken()
   }, [])
 
