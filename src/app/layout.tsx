@@ -27,6 +27,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }
 
         })
+        if (!response.ok) {
+          throw new Error(`${response}`)
+        }
         const data = await response.json()
         if (response.ok) {
           setAccessToken(data.access_token)
