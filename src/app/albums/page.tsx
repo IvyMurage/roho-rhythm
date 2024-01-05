@@ -35,7 +35,6 @@ function Album() {
 
         if (response.ok) {
           const data = await response.json();
-          console.log(data)
           setAlbums(data?.items?.map((item: { track: { album: { id: string; name: string; images: { url: any; }[]; external_urls: { spotify: string }; }; }; }) => {
             return {
               id: item.track.album.id,
