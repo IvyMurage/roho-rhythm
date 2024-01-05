@@ -17,8 +17,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const [accessToken, setAccessToken] = useState<AccessTokenType | null>(null)
 
   useEffect(() => {
-    try {
-      const getAccessToken = async () => {
+
+    const getAccessToken = async () => {
+      try {
         const response = await fetch('/api/access-token', {
           method: 'POST',
           headers: {
@@ -31,13 +32,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           setAccessToken(data.access_token)
         }
       }
-      getAccessToken()
-
+      catch (error) {
+        console.error(error)
+      }
     }
-
-    catch (error) {
-      console.error(error)
-    }
+    getAccessToken()
   }, [])
 
   return (
