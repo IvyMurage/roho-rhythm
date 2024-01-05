@@ -1,4 +1,5 @@
 'use client'
+import Loading from '@/components/loading';
 import Search from '@/components/search';
 import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -39,7 +40,7 @@ function Album() {
             return {
               id: item.track.album.id,
               name: item.track.album.name,
-              image: item.track.album.images[2].url,
+              image: item.track.album.images[0].url,
               external_urls: item.track.album.external_urls.spotify
 
             }
@@ -71,7 +72,7 @@ function Album() {
   const albumList = searchedAlbum.map(album => {
     return (
       <div key={album.id} className="mt-[1rem] w-fit">
-        <Image className=' shadow-lg rounded-md' src={album.image} alt={album.name} width="150" height="200" />
+        <Image className=' shadow-lg rounded-md' src={album.image} alt={album.name} width="200" height="200" />
         <div className="font-bold text-[#ffdb58] text-sm">{album.name}</div>
         <div><a href={album.external_urls} target="_blank" rel="noopener noreferrer" className="text-[#ffdb58]">Listen on Spotify</a></div>
       </div>
@@ -97,6 +98,7 @@ function Album() {
   return (
     <>
       <Search handleChange={handleSearchChange} searchValue={search} />
+      {searchedAlbum.length === 0 ? <Loading /> : null}
 
       <div className="mt-[1rem]  w-full grid grid-cols-3 p-[1rem] items-center  ">{albumList}</div>
 

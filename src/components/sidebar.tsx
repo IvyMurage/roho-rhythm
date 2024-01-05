@@ -19,12 +19,12 @@ function Sidebar() {
             </Link>
           </li>
 
-          <li >
+          {/* <li >
             <Link className="nav-link" href="/artists">
               <FontAwesomeIcon icon={faPerson} className="icon" />
               Artists
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link className="nav-link" href="/albums">
               <FontAwesomeIcon icon={faRadio} className="icon" />
