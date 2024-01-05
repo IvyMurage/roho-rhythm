@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
     const getAccessToken = async () => {
       try {
-        const response = await fetch('/api/access-token', {
+        const response = await fetch("/api/access-token", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -30,8 +30,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         if (!response.ok) {
           throw new Error(`Error`)
         }
-        const data = await response.json()
         if (response.ok) {
+          const data = await response.json()
           setAccessToken(data.access_token)
         }
       }
