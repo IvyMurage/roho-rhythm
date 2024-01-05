@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
     const getAccessToken = async () => {
       try {
-        const response = await fetch("/api/access-token", {
+        const response = await fetch("/api/accessToken", {
           method: 'POST',
         })
         if (!response.ok) {
