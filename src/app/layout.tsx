@@ -22,10 +22,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       try {
         const response = await fetch("/api/access-token", {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-
         })
         if (!response.ok) {
           throw new Error(`Error`)

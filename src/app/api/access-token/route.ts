@@ -17,8 +17,8 @@ export async function POST() {
       }),
     });
 
-    const data = await response.json();
     if (response.ok) {
+      const data = await response.json();
       return NextResponse.json({
         access_token: data.access_token,
       });
