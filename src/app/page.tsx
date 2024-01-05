@@ -65,7 +65,7 @@ export default function Home() {
         </div>
 
         <div className="overflow-hidden">
-          <Image className=" fixed right-[-200px]  top-[-50px] overflow-hidden " src='/../assets/music_girl.png' alt='music girl' width="800" height="300" />
+          <Image className=" fixed right-[-200px]  top-[-50px] overflow-hidden " src='/assets/music_girl.png' alt='music girl' width="800" height="300" />
         </div>
       </div>
       <div className="grid grid-flow-col z-0 top-[350px] absolute images text-[12px] scrollbar-hide w-full overflow-scroll">
