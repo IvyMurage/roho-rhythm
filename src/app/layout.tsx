@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         })
         if (!response.ok) {
-          throw new Error(`${response}`)
+          throw new Error(`Something went wrong`)
         }
         const data = await response.json()
         if (response.ok) {
